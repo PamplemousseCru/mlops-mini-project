@@ -14,6 +14,6 @@ class Numbers(BaseModel):
 
 
 @app.post("/predict")
-async def calculate_sum(numbers: Numbers):
+async def model_predict(numbers: Numbers):
     result = model.predict([[numbers.size, numbers.bedrooms, numbers.garden]])
     return {"y_pred": result[0]}

@@ -19,3 +19,15 @@ jobs:
 
       - name: Push image
         run: docker push pamplemoussecru/mlops-mini-projet:latest
+
+      - name: Deploy to VM via SSH
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: 4.210.225.87
+          username: ubuntu
+          key: Supermotdepasse!42
+          script: |
+            sudo docker pull pamplemoussecru/mlops-mini-projet:latest
+            sudo docker stop ml2-container || true
+            sudo docker rm ml2-container || true
+            sudo docker run -d -p 8005:8000 --name ml2-container pamplemoussecru/mlops-mini-projet:latest
