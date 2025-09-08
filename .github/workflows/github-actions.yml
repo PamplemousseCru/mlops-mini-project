@@ -1,9 +1,21 @@
 name: GitHub Actions Demo
 on: [push]
+
 jobs:
-  Explore-GitHub-Actions:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run : python job.py
+      - name: Checkout code
+        uses: actions/checkout@v4
 
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Build image
+        run: docker build -t pamplemoussecru/mlops-mini-projet:latest .
+
+      - name: Push image
+        run: docker push pamplemoussecru/mlops-mini-projet:latest
