@@ -25,7 +25,7 @@ jobs:
         with:
           host: 4.210.225.87
           username: ubuntu
-          key: Supermotdepasse!42
+          key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker pull pamplemoussecru/mlops-mini-projet:latest
             sudo docker stop ml2-container || true
