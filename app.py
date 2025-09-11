@@ -11,7 +11,6 @@ text_model = T5ForConditionalGeneration.from_pretrained(model_name)
 
 app = FastAPI()
 
-
 class Numbers(BaseModel):
     size: int
     bedrooms: int
