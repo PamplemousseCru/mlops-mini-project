@@ -30,4 +30,4 @@ jobs:
             sudo docker pull pamplemoussecru/mlops-mini-projet:latest
             sudo docker stop ml2-container || true
             sudo docker rm ml2-container || true
-            sudo docker run -d -p 8005:8000 --name ml2-container pamplemoussecru/mlops-mini-projet:latest
+            sudo docker run --pull=always -d -p 8005:8000 --name ml2-container pamplemoussecru/mlops-mini-projet:latest
