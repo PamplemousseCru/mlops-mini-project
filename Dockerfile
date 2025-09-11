@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN pip install --no-cache-dir fastapi uvicorn joblib scikit-learn transformers torch
+RUN pip install --no-cache-dir fastapi uvicorn joblib scikit-learn transformers torch sentencepiece
 
 COPY app.py .
 COPY regression.joblib .
