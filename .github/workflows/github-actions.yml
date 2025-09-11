@@ -23,8 +23,8 @@ jobs:
       - name: Deploy to VM via SSH
         uses: appleboy/ssh-action@v0.1.7
         with:
-          host: 4.210.225.87
-          username: ubuntu
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker pull pamplemoussecru/mlops-mini-projet:latest
